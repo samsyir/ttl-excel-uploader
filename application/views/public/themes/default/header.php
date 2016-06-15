@@ -102,7 +102,7 @@
                 <?php if($this->session->userdata('logged_in')) {?>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <a href="<?= site_url('check') ?>"><i class="fa fa-dashboard fa-fw"></i> Check Upload Status</a>
+                        <a href="<?= site_url('home') ?>"><i class="fa fa-dashboard fa-fw"></i> Check Upload Status</a>
                     </li>
                                         
                     <li class="dropdown">
