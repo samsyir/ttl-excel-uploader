@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="page-header users-header">
-            <h2>Upload Training
+            <h2>Upload Mutu
             </h2>
             </div>
         </div>
@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12">
             <?php echo validation_errors(); ?>
-            <?php echo form_open_multipart('hc/do_upload_training'); ?>
+            <?php echo form_open_multipart('qhsse/do_upload_mutu'); ?>
             <fieldset>
                 <?php echo $error; ?>                
                 <div class="form-group">

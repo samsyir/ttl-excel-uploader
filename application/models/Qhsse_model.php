@@ -25,7 +25,7 @@ class Qhsse_model extends CI_Model {
                 
         }
 
-        public function insert_puas_kust($data)
+        public function insert_kepuasan($data)
         {
                 $this->db->insert('TB_QH_PUAS_KUST',$data,FALSE);
                 

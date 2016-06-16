@@ -115,7 +115,7 @@ class Cpc extends CI_Controller {
 				'DEC_PEMBAYARAN' => $this->db->escape($dataexcel[$i]['DEC_PEMBAYARAN']),
 				'CHR_REALISASI_PROGRAM' => $this->db->escape($dataexcel[$i]['CHR_REALISASI_PROGRAM']),
 				'CHR_KETERANGAN' => $this->db->escape($dataexcel[$i]['CHR_KETERANGAN']),
-				'CHR_BULAN' => $this->db->escape($this->input->post('bulan')),
+				'INT_BULAN' => $this->db->escape($this->input->post('bulan')),
 				'CHR_TAHUN' => $this->db->escape($this->input->post('tahun')),
 				'CHR_STATUS' => 1,
 				'CHR_UPLOAD_DATE' => $this->db->escape(date('Ymd')),

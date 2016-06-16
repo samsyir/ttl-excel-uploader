@@ -128,7 +128,7 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li>
-                                <a href="<?= site_url('check') ?>"><i class="fa fa-dashboard fa-fw"></i> Check Upload Status</a>
+                                <a href="<?= site_url('home') ?>"><i class="fa fa-dashboard fa-fw"></i> Check Upload Status</a>
                             </li>
                             <li>
                                 <a href="#">
