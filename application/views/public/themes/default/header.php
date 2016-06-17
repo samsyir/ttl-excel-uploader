@@ -104,7 +104,8 @@
                     <li>
                         <a href="<?= site_url('home') ?>"><i class="fa fa-dashboard fa-fw"></i> Check Upload Status</a>
                     </li>
-                                        
+                    
+                    <?php if($this->session->userdata('id_group') == 1) {?>                    
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-gear fa-fw"></i> Master <i class="fa fa-caret-down"></i>
@@ -112,12 +113,11 @@
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="<?= site_url('user'); ?>"><i class="fa fa-user fa-fw"></i> User</a>
                             </li>
-                            <li><a href="<?= site_url('group'); ?>"><i class="fa fa-group fa-fw"></i> Group</a>
-                            </li>
                         </ul>
                         <!-- /.dropdown-user -->
                     </li>
                     <!-- /.dropdown -->
+                    <?php }?>
                     <li class="divider"></li>
                         <li><a href="<?= site_url('welcome/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
@@ -130,6 +130,7 @@
                             <li>
                                 <a href="<?= site_url('home') ?>"><i class="fa fa-dashboard fa-fw"></i> Check Upload Status</a>
                             </li>
+                            <?php if($this->session->userdata('id_group') == 1 || $this->session->userdata('id_group') == 2 ) {?>   
                             <li>
                                 <a href="#">
                                     <i class="fa fa-briefcase fa-fw"></i> Corporate Planning and Communication
@@ -143,6 +144,9 @@
                                 </ul>
                                 <!-- /.cpc -->
                             </li>
+                            <?php }
+                                if($this->session->userdata('id_group') == 1 || $this->session->userdata('id_group') == 3 ) {
+                            ?>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-money fa-fw"></i> Finance and Accounting
@@ -156,6 +160,9 @@
                                 </ul>
                                 <!-- /.fa -->
                             </li>
+                            <?php }
+                                if($this->session->userdata('id_group') == 1 || $this->session->userdata('id_group') == 4 ) {
+                            ?>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-building fa-fw"></i> General Affair and Procurement
@@ -167,6 +174,9 @@
                                 </ul>
                                 <!-- /.gap -->
                             </li>
+                            <?php }
+                                if($this->session->userdata('id_group') == 1 || $this->session->userdata('id_group') == 5 ) {
+                            ?>                            
                             <li>
                                 <a href="#">
                                     <i class="fa fa-group fa-fw"></i> Human Capital
@@ -175,13 +185,16 @@
                                 <ul class="nav nav-second-level collapse in">
                                     <li><a href="<?= site_url('hc/upload_pegawai'); ?>"><i class="fa fa-user fa-fw"></i> Pegawai</a>
                                     </li>
-                                    <li><a href="<?= site_url('hc/upload_rkap'); ?>"><i class="fa fa-user fa-fw"></i> RKAP</a>
+                                    <li><a href="<?= site_url('hc/upload_rkap'); ?>"><i class="fa fa-calendar fa-fw"></i> RKAP</a>
                                     </li>
                                     <li><a href="<?= site_url('hc/upload_training'); ?>"><i class="fa fa-graduation-cap fa-fw"></i> Training</a>
                                     </li>
                                 </ul>
                                 <!-- /.hc -->
                             </li>
+                            <?php }
+                                if($this->session->userdata('id_group') == 1 || $this->session->userdata('id_group') == 6 ) {
+                            ?>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-life-ring fa-fw"></i> QHSSE
@@ -199,6 +212,7 @@
                                 </ul>
                                 <!-- /.qhsse -->
                             </li>
+                            <?php } ?>                            
                         </ul>
                     </div>
                     <!-- /.sidebar-collapse -->

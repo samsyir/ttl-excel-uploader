@@ -62,9 +62,10 @@ class Welcome extends CI_Controller {
 	         'id' => $row->ID_USER,
 	         'nama' => $row->NAMA_USER,
 	         'email' => $row->EMAIL,
-	         'id_group' => $row->ID_GROUP
+	         'id_group' => $row->ID_GROUP,
+	         'logged_in' =>TRUE
 	       );
-	       $this->session->set_userdata('logged_in', $sess_array);
+	       $this->session->set_userdata($sess_array);
 	     }
 	     return TRUE;
 	   }

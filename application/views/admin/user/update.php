@@ -23,13 +23,14 @@
                     <input class="form-control" placeholder="E-mail" name="email" type="email" value="<?= $get_user->EMAIL ?>" autofocus>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" placeholder="Jabatan" name="jabatan" type="text" value="<?= $get_user->JABATAN ?>" autofocus>
-                </div>
-                <div class="form-group">
                     <select class="form-control" name="group">
-			                <option value="1">Administrator</option>
-			                <option value="2">User</option>
-			        </select>
+                            <option value="1">Administrator</option>
+                            <option value="2">CPC</option>
+                            <option value="3">FA</option>
+                            <option value="4">GA</option>
+                            <option value="5">HC</option>
+                            <option value="6">QHSSE</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
