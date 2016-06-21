@@ -86,8 +86,9 @@ class Gap extends CI_Controller {
               
               for ($i=1; $i < count($dataexcel); $i++) { 
               	# code...
+              	$procurement = $this->Gap_model->get_seq_procurement();
               	$datainsert = array(
-              	'INT_ID' 				=> $this->db->escape($dataexcel[$i]['INT_ID']),
+              	'INT_ID' 				=> $this->db->escape($procurement->ID),
 				'CHR_NO_EDOC' 			=> $this->db->escape($dataexcel[$i]['CHR_NO_EDOC']),
 				'CHR_NO_PR' 			=> $this->db->escape($dataexcel[$i]['CHR_NO_PR']),
 				'CHR_NAMA_PEKERJAAN' 	=> $this->db->escape($dataexcel[$i]['CHR_NAMA_PEKERJAAN']),

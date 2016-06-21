@@ -70,17 +70,18 @@ class Fa extends CI_Controller {
               
               for ($i=1; $i < count($dataexcel); $i++) { 
               	# code...
+                $kas = $this->Fa_model->get_seq_kas();                
               	$datainsert = array(
-              	'INT_ID' => $this->db->escape($dataexcel[$i]['INT_ID']),
-				'CHR_URAIAN' => $this->db->escape($dataexcel[$i]['CHR_URAIAN']),
-				'CHR_COMPANY' => $this->db->escape($dataexcel[$i]['CHR_COMPANY']),
-				'CHR_TAHUN' => $this->db->escape($dataexcel[$i]['CHR_TAHUN']),
-				'CHR_BULAN' => $this->db->escape($dataexcel[$i]['CHR_BULAN']),
-				'DEC_AMOUNT' => $this->db->escape($dataexcel[$i]['DEC_AMOUNT']),
-				'CHR_STATUS' => 1,
-				'CHR_UPLOAD_DATE' => $this->db->escape(date('Ymd')),
-				'CHR_UPLOAD_TIME' => $this->db->escape(date('His'))
-				);
+              	'INT_ID' => $this->db->escape($kas->ID),
+        				'CHR_URAIAN' => $this->db->escape($dataexcel[$i]['CHR_URAIAN']),
+        				'CHR_COMPANY' => $this->db->escape($dataexcel[$i]['CHR_COMPANY']),
+        				'CHR_TAHUN' => $this->db->escape($dataexcel[$i]['CHR_TAHUN']),
+        				'CHR_BULAN' => $this->db->escape($dataexcel[$i]['CHR_BULAN']),
+        				'DEC_AMOUNT' => $this->db->escape($dataexcel[$i]['DEC_AMOUNT']),
+        				'CHR_STATUS' => 1,
+        				'CHR_UPLOAD_DATE' => $this->db->escape(date('Ymd')),
+        				'CHR_UPLOAD_TIME' => $this->db->escape(date('His'))
+        				);
 
               	$this->Fa_model->insert_kas($datainsert);
               }
@@ -144,19 +145,20 @@ class Fa extends CI_Controller {
                    // if ($data['cells'][$i][1] == '')
                    //     break;
               		$dataexcel[$i - 1]['INT_ID'] = $data['cells'][$i][1];
-					$dataexcel[$i - 1]['CHR_HEADER'] = $data['cells'][$i][2];
-					$dataexcel[$i - 1]['CHR_KODE'] = $data['cells'][$i][3];
-					$dataexcel[$i - 1]['CHR_URAIAN'] = $data['cells'][$i][4];
-					$dataexcel[$i - 1]['CHR_COMPANY'] = $data['cells'][$i][5];
-					$dataexcel[$i - 1]['CHR_TAHUN'] = $data['cells'][$i][6];
-					$dataexcel[$i - 1]['CHR_BULAN'] = $data['cells'][$i][7];
-					$dataexcel[$i - 1]['DEC_AMOUNT'] = $data['cells'][$i][8];
+        					$dataexcel[$i - 1]['CHR_HEADER'] = $data['cells'][$i][2];
+        					$dataexcel[$i - 1]['CHR_KODE'] = $data['cells'][$i][3];
+        					$dataexcel[$i - 1]['CHR_URAIAN'] = $data['cells'][$i][4];
+        					$dataexcel[$i - 1]['CHR_COMPANY'] = $data['cells'][$i][5];
+        					$dataexcel[$i - 1]['CHR_TAHUN'] = $data['cells'][$i][6];
+        					$dataexcel[$i - 1]['CHR_BULAN'] = $data['cells'][$i][7];
+        					$dataexcel[$i - 1]['DEC_AMOUNT'] = $data['cells'][$i][8];
               }
               
               for ($i=1; $i < count($dataexcel); $i++) { 
               	# code...
+                $neraca = $this->Fa_model->get_seq_neraca(); 
               	$datainsert = array(
-              	'INT_ID' => $this->db->escape($dataexcel[$i]['INT_ID']),
+              	'INT_ID' => $this->db->escape($neraca->ID),
         				'CHR_HEADER' => $this->db->escape($dataexcel[$i]['CHR_HEADER']),
         				'CHR_KODE' => $this->db->escape($dataexcel[$i]['CHR_KODE']),
         				'CHR_URAIAN' => $this->db->escape($dataexcel[$i]['CHR_URAIAN']),

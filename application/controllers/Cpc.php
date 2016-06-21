@@ -89,8 +89,10 @@ class Cpc extends CI_Controller {
               
               for ($i=1; $i < count($dataexcel); $i++) { 
               	# code...
+              	$investasi = $this->Cpc_model->get_seq_investasi();
+
               	$datainsert = array(
-              	'INT_ID' => $this->db->escape($dataexcel[$i]['INT_ID']),
+              	'INT_ID' => $this->db->escape($investasi->ID),
 				'CHR_KODE_TTL' => $this->db->escape($dataexcel[$i]['CHR_KODE_TTL']),
 				'CHR_INV_NAME' => $this->db->escape($dataexcel[$i]['CHR_INV_NAME']),
 				'CHR_SATUAN' => $this->db->escape($dataexcel[$i]['CHR_SATUAN']),
@@ -199,8 +201,9 @@ class Cpc extends CI_Controller {
               
               for ($i=1; $i < count($dataexcel); $i++) { 
               	# code...
+              	$rkm = $this->Cpc_model->get_seq_rkm();
               	$datainsert = array(
-              	'INT_ID' => $this->db->escape($dataexcel[$i]['INT_ID']),
+              	'INT_ID' => $this->db->escape($rkm->ID),
 				'CHR_KATEGORI' => $this->db->escape($dataexcel[$i]['CHR_KATEGORI']),
 				'CHR_BIDANG' => $this->db->escape($dataexcel[$i]['CHR_BIDANG']),
 				'CHR_RKM' => $this->db->escape($dataexcel[$i]['CHR_RKM']),

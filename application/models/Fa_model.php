@@ -9,7 +9,7 @@ class Fa_model extends CI_Model {
 
         public function get_seq_kas()
         {
-                $query = $this->db->query('SELECT sq_fi_kas.nextval FROM dual');
+                $query = $this->db->query('SELECT sq_fi_kas.nextval ID FROM dual');
                 return $query->row();
         }
 
@@ -21,7 +21,7 @@ class Fa_model extends CI_Model {
 
         public function get_seq_neraca()
         {
-                $query = $this->db->query('SELECT sq_fi_neraca.nextval FROM dual');
+                $query = $this->db->query('SELECT sq_fi_neraca.nextval ID FROM dual');
                 return $query->row();
         }
 

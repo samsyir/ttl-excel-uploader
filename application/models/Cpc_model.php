@@ -9,7 +9,7 @@ class Cpc_model extends CI_Model {
 
         public function get_seq_investasi()
         {
-                $query = $this->db->query('SELECT sq_cp_invst.nextval FROM dual');
+                $query = $this->db->query('SELECT sq_cp_invst.nextval ID FROM dual');
                 return $query->row();
         }
 
@@ -21,7 +21,7 @@ class Cpc_model extends CI_Model {
 
         public function get_seq_rkm()
         {
-                $query = $this->db->query('SELECT sq_cp_rkm.nextval FROM dual');
+                $query = $this->db->query('SELECT sq_cp_rkm.nextval ID FROM dual');
                 return $query->row();
         }
 

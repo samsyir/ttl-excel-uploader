@@ -87,8 +87,9 @@ class Qhsse extends CI_Controller {
               
               for ($i=1; $i < count($dataexcel); $i++) { 
               	# code...
+                $k3 = $this->Qhsse_model->get_seq_k3();
               	$datainsert = array(
-              	'INT_ID'            => $this->db->escape($dataexcel[$i]['INT_ID']),
+              	'INT_ID'            => $this->db->escape($k3->ID),
         				'CHR_TAHUN'         => $this->db->escape($dataexcel[$i]['CHR_TAHUN']),
         				'CHR_BULAN'         => $this->db->escape($dataexcel[$i]['CHR_BULAN']),
         				'INT_MAN_POW'       => $this->db->escape($dataexcel[$i]['INT_MAN_POW']),
@@ -115,7 +116,7 @@ class Qhsse extends CI_Controller {
         				'CHR_UPLOAD_TIME'   => $this->db->escape(date('His'))
 				);
 
-              	$this->Qhsse_model->insert_pegawai($datainsert);
+              	$this->Qhsse_model->insert_k3($datainsert);
               }
  
               //delete file
@@ -186,8 +187,9 @@ class Qhsse extends CI_Controller {
               
               for ($i=1; $i < count($dataexcel); $i++) { 
                 # code...
+                $lingkungan = $this->Qhsse_model->get_seq_lingkungan();
                 $datainsert = array(
-                'INT_ID'            => $this->db->escape($dataexcel[$i]['INT_ID']),
+                'INT_ID'            => $this->db->escape($lingkungan->ID),
                 'CHR_TAHUN'         => $this->db->escape($dataexcel[$i]['CHR_TAHUN']),
                 'CHR_BULAN'         => $this->db->escape($dataexcel[$i]['CHR_BULAN']),
                 'INT_ENERGI'        => $this->db->escape($dataexcel[$i]['INT_ENERGI']),
@@ -267,8 +269,9 @@ class Qhsse extends CI_Controller {
               
               for ($i=1; $i < count($dataexcel); $i++) { 
                 # code...
+                $mutu = $this->Qhsse_model->get_seq_mutu();
                 $datainsert = array(
-                'INT_ID'            => $this->db->escape($dataexcel[$i]['INT_ID']),
+                'INT_ID'            => $this->db->escape($mutu->ID),
                 'CHR_TAHUN'         => $this->db->escape($dataexcel[$i]['CHR_TAHUN']),
                 'CHR_BULAN'         => $this->db->escape($dataexcel[$i]['CHR_BULAN']),
                 'INT_JML_KELUHAN'   => $this->db->escape($dataexcel[$i]['INT_JML_KELUHAN']),
@@ -345,8 +348,9 @@ class Qhsse extends CI_Controller {
               
               for ($i=1; $i < count($dataexcel); $i++) { 
                 # code...
+                $kepuasan = $this->Qhsse_model->get_seq_kepuasan();
                 $datainsert = array(
-                'INT_ID'            => $this->db->escape($dataexcel[$i]['INT_ID']),
+                'INT_ID'            => $this->db->escape($kepuasan->ID),
                 'CHR_TAHUN'         => $this->db->escape($dataexcel[$i]['CHR_TAHUN']),
                 'INT_INDEKS'        => $this->db->escape($dataexcel[$i]['INT_INDEKS']),
                 'CHR_UPLOAD_DATE'   => $this->db->escape(date('Ymd')),

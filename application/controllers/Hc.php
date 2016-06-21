@@ -73,16 +73,19 @@ class Hc extends CI_Controller {
               
               for ($i=1; $i < count($dataexcel); $i++) { 
               	# code...
+                $pegawai = $this->Hc_model->get_seq_pegawai();
               	$datainsert = array(
-              	'INT_ID'            => $this->db->escape($dataexcel[$i]['INT_ID']),
+              	'INT_ID'            => $this->db->escape($pegawai->ID),
         				'CHR_NAMA'          => $this->db->escape($dataexcel[$i]['CHR_NAMA']),
         				'CHR_EMP_GROUP'     => $this->db->escape($dataexcel[$i]['CHR_EMP_GROUP']),
         				'CHR_DEPT'          => $this->db->escape($dataexcel[$i]['CHR_DEPT']),
         				'CHR_GENDER'        => $this->db->escape($dataexcel[$i]['CHR_GENDER']),
-        				'DEC_EDUKASI'       => $this->db->escape($dataexcel[$i]['DEC_EDUKASI']),
+        				'CHR_EDUKASI'       => $this->db->escape($dataexcel[$i]['DEC_EDUKASI']),
                 'CHR_BOD'           => $this->db->escape($dataexcel[$i]['CHR_BOD']),
                 'CHR_SERV_CENTER'   => $this->db->escape($dataexcel[$i]['CHR_SERV_CENTER']),
-                'DEC_PRODUCTIVITY'  => $this->db->escape($dataexcel[$i]['DEC_PRODUCTIVITY']),
+                'CHR_PRODUCTIVITY'  => $this->db->escape($dataexcel[$i]['DEC_PRODUCTIVITY']),
+                'CHR_BULAN' => $this->db->escape($this->input->post('bulan')),
+                'CHR_TAHUN' => $this->db->escape($this->input->post('tahun')),
         				'CHR_UPLOAD_DATE'   => $this->db->escape(date('Ymd')),
         				'CHR_UPLOAD_TIME'   => $this->db->escape(date('His'))
 				);
@@ -156,8 +159,9 @@ class Hc extends CI_Controller {
               
               for ($i=1; $i < count($dataexcel); $i++) { 
                 # code...
+                $rkap = $this->Hc_model->get_seq_rkap();
                 $datainsert = array(
-                'INT_ID'            => $this->db->escape($dataexcel[$i]['INT_ID']),
+                'INT_ID'            => $this->db->escape($rkap->ID),
                 'CHR_TAHUN'         => $this->db->escape($dataexcel[$i]['CHR_TAHUN']),
                 'CHR_EMP_GROUP'     => $this->db->escape($dataexcel[$i]['CHR_EMP_GROUP']),
                 'INT_JMLH_PEGAWAI'  => $this->db->escape($dataexcel[$i]['INT_JMLH_PEGAWAI']),
@@ -237,8 +241,9 @@ class Hc extends CI_Controller {
               
               for ($i=1; $i < count($dataexcel); $i++) { 
                 # code...
+                $training = $this->Hc_model->get_seq_training();
                 $datainsert = array(
-                'INT_ID'            => $this->db->escape($dataexcel[$i]['INT_ID']),
+                'INT_ID'            => $this->db->escape($training->ID),
                 'CHR_NAMA'          => $this->db->escape($dataexcel[$i]['CHR_NAMA']),
                 'CHR_EMP_GROUP'     => $this->db->escape($dataexcel[$i]['CHR_EMP_GROUP']),
                 'CHR_DEPT'          => $this->db->escape($dataexcel[$i]['CHR_DEPT']),
