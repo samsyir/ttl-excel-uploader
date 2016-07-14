@@ -14,7 +14,10 @@
     		<fieldset>
                 <?php echo $error; ?>                
                 <div class="form-group">
-                    <input name="nama_file" type="file" >
+                    <?php 
+                        echo '<label>Nama File'.$error.'</label>';
+                        echo form_upload('userfile');
+                    ?>
                 </div>
                 <div class="form-group">
                     <?php $options = array(

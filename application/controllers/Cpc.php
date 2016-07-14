@@ -32,7 +32,7 @@ class Cpc extends CI_Controller {
 	public function do_upload_investasi() {
 		// config upload
             $config['upload_path'] = './temp_upload/';
-            $config['allowed_types'] = 'xls|xlsx';
+            $config['allowed_types'] = 'xls';
             $config['max_size'] = '10000';
             $this->load->library('upload', $config);
  
@@ -85,6 +85,7 @@ class Cpc extends CI_Controller {
 					$dataexcel[$i - 1]['DEC_PEMBAYARAN'] = $data['cells'][$i][23];
 					$dataexcel[$i - 1]['CHR_REALISASI_PROGRAM'] = $data['cells'][$i][24];
 					$dataexcel[$i - 1]['CHR_KETERANGAN'] = $data['cells'][$i][25];
+					$dataexcel[$i - 1]['CHR_PIC_DEPT'] = $data['cells'][$i][26];
               }
               
               for ($i=1; $i < count($dataexcel); $i++) { 
@@ -117,6 +118,7 @@ class Cpc extends CI_Controller {
 				'DEC_PEMBAYARAN' => $this->db->escape($dataexcel[$i]['DEC_PEMBAYARAN']),
 				'CHR_REALISASI_PROGRAM' => $this->db->escape($dataexcel[$i]['CHR_REALISASI_PROGRAM']),
 				'CHR_KETERANGAN' => $this->db->escape($dataexcel[$i]['CHR_KETERANGAN']),
+				'CHR_PIC_DEPT' => $this->db->escape($dataexcel[$i]['CHR_PIC_DEPT']),
 				'INT_BULAN' => $this->db->escape($this->input->post('bulan')),
 				'CHR_TAHUN' => $this->db->escape($this->input->post('tahun')),
 				'CHR_STATUS' => 1,
@@ -157,7 +159,7 @@ class Cpc extends CI_Controller {
 	public function do_upload_rkm() {
 		// config upload
             $config['upload_path'] = './temp_upload/';
-            $config['allowed_types'] = 'xls|xlsx';
+            $config['allowed_types'] = 'xls';
             $config['max_size'] = '10000';
             $this->load->library('upload', $config);
  
@@ -197,6 +199,7 @@ class Cpc extends CI_Controller {
 					$dataexcel[$i - 1]['CHR_STATUS_PROSES'] = $data['cells'][$i][10];
 					$dataexcel[$i - 1]['CHR_STATUS_SELESAI'] = $data['cells'][$i][11];
 					$dataexcel[$i - 1]['CHR_STATUS_TDK_DILAKSANAKAN'] = $data['cells'][$i][12];
+					$dataexcel[$i - 1]['CHR_KETERANGAN'] = $data['cells'][$i][13];
               }
               
               for ($i=1; $i < count($dataexcel); $i++) { 
@@ -215,6 +218,7 @@ class Cpc extends CI_Controller {
 				'CHR_STATUS_PROSES' => $this->db->escape($dataexcel[$i]['CHR_STATUS_PROSES']),
 				'CHR_STATUS_SELESAI' => $this->db->escape($dataexcel[$i]['CHR_STATUS_SELESAI']),
 				'CHR_STATUS_TDK_DILAKSANAKAN' => $this->db->escape($dataexcel[$i]['CHR_STATUS_TDK_DILAKSANAKAN']),
+				'CHR_KETERANGAN' => $this->db->escape($dataexcel[$i]['CHR_KETERANGAN']),
 				'CHR_BULAN' => $this->db->escape($this->input->post('bulan')),
 				'CHR_TAHUN' => $this->db->escape($this->input->post('tahun')),
 				'CHR_STATUS' => 1,

@@ -183,9 +183,9 @@
                                     <span class="fa arrow"></span>
                                 </a>
                                 <ul class="nav nav-second-level collapse in">
-                                    <li><a href="<?= site_url('hc/upload_pegawai'); ?>"><i class="fa fa-user fa-fw"></i> Pegawai</a>
+                                    <li><a href="<?= site_url('hc/upload_organization'); ?>"><i class="fa fa-user fa-fw"></i> Organization</a>
                                     </li>
-                                    <li><a href="<?= site_url('hc/upload_rkap'); ?>"><i class="fa fa-calendar fa-fw"></i> RKAP</a>
+                                    <li><a href="<?= site_url('hc/upload_workforce'); ?>"><i class="fa fa-calendar fa-fw"></i> Workforce</a>
                                     </li>
                                     <li><a href="<?= site_url('hc/upload_training'); ?>"><i class="fa fa-graduation-cap fa-fw"></i> Training</a>
                                     </li>
