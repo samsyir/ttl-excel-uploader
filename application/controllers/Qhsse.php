@@ -234,7 +234,7 @@ class Qhsse extends CI_Controller {
   public function do_upload_mutu() {
     // config upload
             $config['upload_path'] = './temp_upload/';
-            $config['allowed_types'] = 'xls|xlsx';
+            $config['allowed_types'] = 'xls';
             $config['max_size'] = '10000';
             $this->load->library('upload', $config);
  
@@ -315,7 +315,7 @@ class Qhsse extends CI_Controller {
   public function do_upload_kepuasan() {
     // config upload
             $config['upload_path'] = './temp_upload/';
-            $config['allowed_types'] = 'xls|xlsx';
+            $config['allowed_types'] = 'xls';
             $config['max_size'] = '10000';
             $this->load->library('upload', $config);
  
