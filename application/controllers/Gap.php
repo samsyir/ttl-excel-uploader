@@ -32,7 +32,7 @@ class Gap extends CI_Controller {
 	public function do_upload_procurement() {
 		// config upload
             $config['upload_path'] = './temp_upload/';
-            $config['allowed_types'] = 'xls|xlsx';
+            $config['allowed_types'] = 'xls';
             $config['max_size'] = '10000';
             $this->load->library('upload', $config);
  
@@ -73,15 +73,9 @@ class Gap extends CI_Controller {
 					$dataexcel[$i - 1]['INT_PERIOD'] 			= $data['cells'][$i][11];
 					$dataexcel[$i - 1]['INT_FISCAL_YEAR'] 		= $data['cells'][$i][12];
 					$dataexcel[$i - 1]['CHR_KONTRAK'] 			= $data['cells'][$i][13];
-					$dataexcel[$i - 1]['DEC_NILAI_PENGADAAN'] 	= $data['cells'][$i][14];
-              		$dataexcel[$i - 1]['DEC_NILAI_HPS'] 		= $data['cells'][$i][15];
-					$dataexcel[$i - 1]['DEC_NILAI_PENAWARAN_1'] = $data['cells'][$i][16];
-					$dataexcel[$i - 1]['DEC_NILAI_PENAWARAN_2']	= $data['cells'][$i][17];
-					$dataexcel[$i - 1]['DEC_NILAI_PENAWARAN_3']	= $data['cells'][$i][18];
-					$dataexcel[$i - 1]['DEC_NILAI_PENAWARAN_4']	= $data['cells'][$i][19];
-					$dataexcel[$i - 1]['DEC_NILAI_AKHIR'] 		= $data['cells'][$i][20];
-					$dataexcel[$i - 1]['DEC_PERFORMANCE_SAVING']= $data['cells'][$i][21];
-					$dataexcel[$i - 1]['CHR_PO'] 				= $data['cells'][$i][22];
+              		$dataexcel[$i - 1]['DEC_NILAI_HPS'] 		= $data['cells'][$i][14];
+					$dataexcel[$i - 1]['DEC_NILAI_PENAWARAN_1'] = $data['cells'][$i][15];
+					$dataexcel[$i - 1]['DEC_NILAI_AKHIR'] 		= $data['cells'][$i][16];
               }
               
               for ($i=1; $i < count($dataexcel); $i++) { 
@@ -101,15 +95,9 @@ class Gap extends CI_Controller {
 				'INT_PERIOD' 			=> $this->db->escape($dataexcel[$i]['INT_PERIOD']),
 				'INT_FISCAL_YEAR' 		=> $this->db->escape($dataexcel[$i]['INT_FISCAL_YEAR']),
 				'CHR_KONTRAK' 			=> $this->db->escape($dataexcel[$i]['CHR_KONTRAK']),
-				'DEC_NILAI_PENGADAAN' 	=> $this->db->escape($dataexcel[$i]['DEC_NILAI_PENGADAAN']),
 				'DEC_NILAI_HPS' 		=> $this->db->escape($dataexcel[$i]['DEC_NILAI_HPS']),
 				'DEC_NILAI_PENAWARAN_1' => $this->db->escape($dataexcel[$i]['DEC_NILAI_PENAWARAN_1']),
-				'DEC_NILAI_PENAWARAN_2' => $this->db->escape($dataexcel[$i]['DEC_NILAI_PENAWARAN_2']),
-				'DEC_NILAI_PENAWARAN_3' => $this->db->escape($dataexcel[$i]['DEC_NILAI_PENAWARAN_3']),
-				'DEC_NILAI_PENAWARAN_4' => $this->db->escape($dataexcel[$i]['DEC_NILAI_PENAWARAN_4']),
 				'DEC_NILAI_AKHIR' 		=> $this->db->escape($dataexcel[$i]['DEC_NILAI_AKHIR']),
-				'DEC_PERFORMANCE_SAVING'=> $this->db->escape($dataexcel[$i]['DEC_PERFORMANCE_SAVING']),
-				'CHR_PO' 				=> $this->db->escape($dataexcel[$i]['CHR_PO']),
 				'CHR_UPLOAD_DATE' 		=> $this->db->escape(date('Ymd')),
 				'CHR_UPLOAD_TIME' 		=> $this->db->escape(date('His'))
 				);
@@ -123,7 +111,7 @@ class Gap extends CI_Controller {
               unlink($path);
             }
         //redirect ke halaman awal
-        redirect(site_url('fa/upload_kas'));
+        redirect(site_url('gap/upload_procurement'));
 
 	}
 }
