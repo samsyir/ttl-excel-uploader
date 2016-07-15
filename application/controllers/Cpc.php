@@ -60,32 +60,35 @@ class Cpc extends CI_Controller {
               for ($i = 1; $i <= $data['numRows']; $i++) {
                    // if ($data['cells'][$i][1] == '')
                    //     break;
-              		$dataexcel[$i - 1]['INT_ID'] = $data['cells'][$i][1];
-					$dataexcel[$i - 1]['CHR_KODE_TTL'] = $data['cells'][$i][2];
-					$dataexcel[$i - 1]['CHR_INV_NAME'] = $data['cells'][$i][3];
-					$dataexcel[$i - 1]['CHR_SATUAN'] = $data['cells'][$i][4];
-					$dataexcel[$i - 1]['DEC_ANGGARAN'] = $data['cells'][$i][5];
-					$dataexcel[$i - 1]['INT_VOLUME'] = $data['cells'][$i][6];
-					$dataexcel[$i - 1]['DEC_BIAYA'] = $data['cells'][$i][7];
-					$dataexcel[$i - 1]['INT_JMLH_PROGRAM'] = $data['cells'][$i][8];
-					$dataexcel[$i - 1]['CHR_NO_KONTRAK'] = $data['cells'][$i][9];
-					$dataexcel[$i - 1]['DEC_NILAI_KONTRAK'] = $data['cells'][$i][10];
-					$dataexcel[$i - 1]['DEC_LEVEL_REVENUE'] = $data['cells'][$i][11];
-					$dataexcel[$i - 1]['DEC_LEVEL_SERVICE'] = $data['cells'][$i][12];
-					$dataexcel[$i - 1]['DEC_LEVEL_SAFETY'] = $data['cells'][$i][13];
-					$dataexcel[$i - 1]['DEC_MIN_REQ'] = $data['cells'][$i][14];
-					$dataexcel[$i - 1]['CHR_DURASI'] = $data['cells'][$i][15];
-					$dataexcel[$i - 1]['CHR_RENCANA_MULAI'] = $data['cells'][$i][16];
-					$dataexcel[$i - 1]['DEC_ANG_TRIWULAN_1'] = $data['cells'][$i][17];
-					$dataexcel[$i - 1]['DEC_ANG_TRIWULAN_2'] = $data['cells'][$i][18];
-					$dataexcel[$i - 1]['DEC_ANG_TRIWULAN_3'] = $data['cells'][$i][19];
-					$dataexcel[$i - 1]['DEC_ANG_TRIWULAN_4'] = $data['cells'][$i][20];
-					$dataexcel[$i - 1]['INT_REALISASI_FISIK'] = $data['cells'][$i][21];
-					$dataexcel[$i - 1]['DEC_REALISASI_ANG'] = $data['cells'][$i][22];
-					$dataexcel[$i - 1]['DEC_PEMBAYARAN'] = $data['cells'][$i][23];
-					$dataexcel[$i - 1]['CHR_REALISASI_PROGRAM'] = $data['cells'][$i][24];
-					$dataexcel[$i - 1]['CHR_KETERANGAN'] = $data['cells'][$i][25];
-					$dataexcel[$i - 1]['CHR_PIC_DEPT'] = $data['cells'][$i][26];
+              		$dataexcel[$i - 1]['INT_ID'] 				= $data['cells'][$i][1];
+					$dataexcel[$i - 1]['CHR_KODE_TTL'] 			= $data['cells'][$i][2];
+					$dataexcel[$i - 1]['CHR_AKTIVA'] 			= $data['cells'][$i][3];
+					$dataexcel[$i - 1]['CHR_KATEGORI'] 			= $data['cells'][$i][4];
+					$dataexcel[$i - 1]['CHR_INV_NAME'] 			= $data['cells'][$i][5];
+					$dataexcel[$i - 1]['CHR_SATUAN'] 			= $data['cells'][$i][6];
+					$dataexcel[$i - 1]['DEC_ANGGARAN'] 			= $data['cells'][$i][7];
+					$dataexcel[$i - 1]['INT_VOLUME'] 			= $data['cells'][$i][8];
+					$dataexcel[$i - 1]['DEC_BIAYA'] 			= $data['cells'][$i][9];
+					$dataexcel[$i - 1]['INT_JMLH_PROGRAM'] 		= $data['cells'][$i][10];
+					$dataexcel[$i - 1]['CHR_NO_KONTRAK'] 		= $data['cells'][$i][11];
+					$dataexcel[$i - 1]['DEC_NILAI_KONTRAK'] 	= $data['cells'][$i][12];
+					$dataexcel[$i - 1]['DEC_LEVEL_REVENUE'] 	= $data['cells'][$i][13];
+					$dataexcel[$i - 1]['DEC_LEVEL_SERVICE'] 	= $data['cells'][$i][14];
+					$dataexcel[$i - 1]['DEC_LEVEL_SAFETY'] 		= $data['cells'][$i][15];
+					$dataexcel[$i - 1]['DEC_MIN_REQ'] 			= $data['cells'][$i][16];
+					$dataexcel[$i - 1]['CHR_DURASI'] 			= $data['cells'][$i][17];
+					$dataexcel[$i - 1]['CHR_RENCANA_MULAI'] 	= $data['cells'][$i][18];
+					$dataexcel[$i - 1]['DEC_ANG_TRIWULAN_1'] 	= $data['cells'][$i][19];
+					$dataexcel[$i - 1]['DEC_ANG_TRIWULAN_2'] 	= $data['cells'][$i][20];
+					$dataexcel[$i - 1]['DEC_ANG_TRIWULAN_3'] 	= $data['cells'][$i][21];
+					$dataexcel[$i - 1]['DEC_ANG_TRIWULAN_4'] 	= $data['cells'][$i][22];
+					$dataexcel[$i - 1]['INT_REALISASI_FISIK'] 	= $data['cells'][$i][23];
+					$dataexcel[$i - 1]['DEC_REALISASI_ANG'] 	= $data['cells'][$i][24];
+					$dataexcel[$i - 1]['DEC_PEMBAYARAN'] 		= $data['cells'][$i][25];
+					$dataexcel[$i - 1]['CHR_REALISASI_PROGRAM'] = $data['cells'][$i][26];
+					$dataexcel[$i - 1]['CHR_KETERANGAN'] 		= $data['cells'][$i][27];
+					$dataexcel[$i - 1]['CHR_PIC_DEPT'] 			= $data['cells'][$i][28];
+					$dataexcel[$i - 1]['CHR_STATUS'] 			= $data['cells'][$i][29];
               }
               
               for ($i=1; $i < count($dataexcel); $i++) { 
@@ -95,6 +98,8 @@ class Cpc extends CI_Controller {
               	$datainsert = array(
               	'INT_ID' => $this->db->escape($investasi->ID),
 				'CHR_KODE_TTL' => $this->db->escape($dataexcel[$i]['CHR_KODE_TTL']),
+				'CHR_AKTIVA' => $this->db->escape($dataexcel[$i]['CHR_AKTIVA']),
+				'CHR_KATEGORI' => $this->db->escape($dataexcel[$i]['CHR_KATEGORI']),
 				'CHR_INV_NAME' => $this->db->escape($dataexcel[$i]['CHR_INV_NAME']),
 				'CHR_SATUAN' => $this->db->escape($dataexcel[$i]['CHR_SATUAN']),
 				'DEC_ANGGARAN' => $this->db->escape($dataexcel[$i]['DEC_ANGGARAN']),
@@ -121,7 +126,7 @@ class Cpc extends CI_Controller {
 				'CHR_PIC_DEPT' => $this->db->escape($dataexcel[$i]['CHR_PIC_DEPT']),
 				'INT_BULAN' => $this->db->escape($this->input->post('bulan')),
 				'CHR_TAHUN' => $this->db->escape($this->input->post('tahun')),
-				'CHR_STATUS' => 1,
+				'CHR_STATUS' =>  $this->db->escape($dataexcel[$i]['CHR_STATUS']),
 				'CHR_UPLOAD_DATE' => $this->db->escape(date('Ymd')),
 				'CHR_UPLOAD_TIME' => $this->db->escape(date('His'))
 				);

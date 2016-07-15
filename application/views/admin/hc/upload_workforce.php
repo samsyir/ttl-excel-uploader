@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="page-header users-header">
-            <h2>Upload RKAP
+            <h2>Upload Workforce
             </h2>
             </div>
         </div>
@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12">
             <?php echo validation_errors(); ?>
-            <?php echo form_open_multipart('hc/do_upload_rkap'); ?>
+            <?php echo form_open_multipart('hc/do_upload_workforce'); ?>
             <fieldset>
                 <?php echo $error; ?>                
                 <div class="form-group">

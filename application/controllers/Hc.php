@@ -12,13 +12,13 @@ class Hc extends CI_Controller {
 		redirect('welcome');
 	}
 
-	public function upload_pegawai($error = NULL) {
+	public function upload_organization($error = NULL) {
 
 		if($this->session->userdata('logged_in'))
     	{
     		$data['error'] = $error['error'];
 			$this->load->view('public/themes/default/header');
-	        $this->load->view('admin/hc/upload_pegawai',$data);
+	        $this->load->view('admin/hc/upload_organization',$data);
 	        $this->load->view('public/themes/default/footer');
 	    }
 	    else
@@ -29,10 +29,10 @@ class Hc extends CI_Controller {
 
 	}
 
-	public function do_upload_pegawai() {
+	public function do_upload_organization() {
 		// config upload
             $config['upload_path'] = './temp_upload/';
-            $config['allowed_types'] = 'xls|xlsx';
+            $config['allowed_types'] = 'xls';
             $config['max_size'] = '10000';
             $this->load->library('upload', $config);
  
@@ -60,37 +60,31 @@ class Hc extends CI_Controller {
               for ($i = 1; $i <= $data['numRows']; $i++) {
                    // if ($data['cells'][$i][1] == '')
                    //     break;
-              		$dataexcel[$i - 1]['INT_ID']            = $data['cells'][$i][1];
-        					$dataexcel[$i - 1]['CHR_NAMA']          = $data['cells'][$i][2];
-        					$dataexcel[$i - 1]['CHR_EMP_GROUP']     = $data['cells'][$i][3];
-        					$dataexcel[$i - 1]['CHR_DEPT']          = $data['cells'][$i][4];
-        					$dataexcel[$i - 1]['CHR_GENDER']        = $data['cells'][$i][5];
-        					$dataexcel[$i - 1]['DEC_EDUKASI']       = $data['cells'][$i][6];
-                  $dataexcel[$i - 1]['CHR_BOD']           = $data['cells'][$i][7];
-                  $dataexcel[$i - 1]['CHR_SERV_CENTER']   = $data['cells'][$i][8];
-                  $dataexcel[$i - 1]['DEC_PRODUCTIVITY']  = $data['cells'][$i][9];
+              		$dataexcel[$i - 1]['INT_ID']               = $data['cells'][$i][1];
+        					$dataexcel[$i - 1]['CHR_BULAN']            = $data['cells'][$i][2];
+        					$dataexcel[$i - 1]['CHR_TAHUN']            = $data['cells'][$i][3];
+        					$dataexcel[$i - 1]['CHR_DEPT']             = $data['cells'][$i][4];
+        					$dataexcel[$i - 1]['CHR_COUNT_PAP']        = $data['cells'][$i][5];
+        					$dataexcel[$i - 1]['CHR_GEN_PRODUKSI']     = $data['cells'][$i][6];
+                  $dataexcel[$i - 1]['CHR_GEN_NONPRODUKSI']  = $data['cells'][$i][7];
               }
               
               for ($i=1; $i < count($dataexcel); $i++) { 
               	# code...
-                $pegawai = $this->Hc_model->get_seq_pegawai();
+                $organization = $this->Hc_model->get_seq_organization();
               	$datainsert = array(
-              	'INT_ID'            => $this->db->escape($pegawai->ID),
-        				'CHR_NAMA'          => $this->db->escape($dataexcel[$i]['CHR_NAMA']),
-        				'CHR_EMP_GROUP'     => $this->db->escape($dataexcel[$i]['CHR_EMP_GROUP']),
+              	'INT_ID'            => $this->db->escape($organization->ID),
+        				'CHR_BULAN'          => $this->db->escape($dataexcel[$i]['CHR_BULAN']),
+        				'CHR_TAHUN'     => $this->db->escape($dataexcel[$i]['CHR_TAHUN']),
         				'CHR_DEPT'          => $this->db->escape($dataexcel[$i]['CHR_DEPT']),
-        				'CHR_GENDER'        => $this->db->escape($dataexcel[$i]['CHR_GENDER']),
-        				'CHR_EDUKASI'       => $this->db->escape($dataexcel[$i]['DEC_EDUKASI']),
-                'CHR_BOD'           => $this->db->escape($dataexcel[$i]['CHR_BOD']),
-                'CHR_SERV_CENTER'   => $this->db->escape($dataexcel[$i]['CHR_SERV_CENTER']),
-                'CHR_PRODUCTIVITY'  => $this->db->escape($dataexcel[$i]['DEC_PRODUCTIVITY']),
-                'CHR_BULAN' => $this->db->escape($this->input->post('bulan')),
-                'CHR_TAHUN' => $this->db->escape($this->input->post('tahun')),
+        				'CHR_COUNT_PAP'        => $this->db->escape($dataexcel[$i]['CHR_COUNT_PAP']),
+        				'CHR_GEN_PRODUKSI'       => $this->db->escape($dataexcel[$i]['CHR_GEN_PRODUKSI']),
+                'CHR_GEN_NONPRODUKSI'           => $this->db->escape($dataexcel[$i]['CHR_GEN_NONPRODUKSI']),
         				'CHR_UPLOAD_DATE'   => $this->db->escape(date('Ymd')),
         				'CHR_UPLOAD_TIME'   => $this->db->escape(date('His'))
 				);
 
-              	$this->Hc_model->insert_pegawai($datainsert);
+              	$this->Hc_model->insert_organization($datainsert);
               }
  
               //delete file
@@ -99,17 +93,17 @@ class Hc extends CI_Controller {
               unlink($path);
             }
         //redirect ke halaman awal
-        redirect(site_url('hc/upload_pegawai'));
+        redirect(site_url('hc/upload_organization'));
 
 	}
 
-	public function upload_rkap($error = NULL) {
+	public function upload_workforce($error = NULL) {
 
 		if($this->session->userdata('logged_in'))
     	{
     		$data['error'] = $error['error'];
 			$this->load->view('public/themes/default/header');
-	        $this->load->view('admin/hc/upload_rkap',$data);
+	        $this->load->view('admin/hc/upload_workforce',$data);
 	        $this->load->view('public/themes/default/footer');
 	    }
 	    else
@@ -120,17 +114,17 @@ class Hc extends CI_Controller {
 
 	}
 
-	public function do_upload_rkap() {
+	public function do_upload_workforce() {
     // config upload
             $config['upload_path'] = './temp_upload/';
-            $config['allowed_types'] = 'xls|xlsx';
+            $config['allowed_types'] = 'xls';
             $config['max_size'] = '10000';
             $this->load->library('upload', $config);
  
             if ( ! $this->upload->do_upload()) {
                 // jika validasi file gagal, kirim parameter error ke index
                 $error = array('error' => $this->upload->display_errors());
-                $this->upload_rkap($error);
+                $this->upload_workforce($error);
 
             } 
             else {
@@ -152,24 +146,56 @@ class Hc extends CI_Controller {
                    // if ($data['cells'][$i][1] == '')
                    //     break;
                   $dataexcel[$i - 1]['INT_ID']            = $data['cells'][$i][1];
-                  $dataexcel[$i - 1]['CHR_TAHUN']         = $data['cells'][$i][2];
-                  $dataexcel[$i - 1]['CHR_EMP_GROUP']     = $data['cells'][$i][3];
-                  $dataexcel[$i - 1]['INT_JMLH_PEGAWAI']  = $data['cells'][$i][4];
+                  $dataexcel[$i - 1]['CHR_BULAN']         = $data['cells'][$i][2];
+                  $dataexcel[$i - 1]['CHR_TAHUN']         = $data['cells'][$i][3];
+                  $dataexcel[$i - 1]['CHR_EMP_GROUP']     = $data['cells'][$i][4];
+                  $dataexcel[$i - 1]['CHR_GEN_MAN']       = $data['cells'][$i][5];
+                  $dataexcel[$i - 1]['CHR_GEN_WMN']       = $data['cells'][$i][6];
+                  $dataexcel[$i - 1]['CHR_SER_DIR']       = $data['cells'][$i][7];
+                  $dataexcel[$i - 1]['CHR_SER_IND']       = $data['cells'][$i][8];
+                  $dataexcel[$i - 1]['CHR_SER_SUP']       = $data['cells'][$i][9];
+                  $dataexcel[$i - 1]['CHR_EDU_AB']        = $data['cells'][$i][10];
+                  $dataexcel[$i - 1]['CHR_EDU_05']        = $data['cells'][$i][11];
+                  $dataexcel[$i - 1]['CHR_EDU_06']        = $data['cells'][$i][12];
+                  $dataexcel[$i - 1]['CHR_EDU_07']        = $data['cells'][$i][13];
+                  $dataexcel[$i - 1]['CHR_EDU_08']        = $data['cells'][$i][14];
+                  $dataexcel[$i - 1]['CHR_AGE_30']        = $data['cells'][$i][15];
+                  $dataexcel[$i - 1]['CHR_AGE_3135']      = $data['cells'][$i][16];
+                  $dataexcel[$i - 1]['CHR_AGE_3640']      = $data['cells'][$i][17];
+                  $dataexcel[$i - 1]['CHR_AGE_4145']      = $data['cells'][$i][18];
+                  $dataexcel[$i - 1]['CHR_AGE_4650']      = $data['cells'][$i][19];
+                  $dataexcel[$i - 1]['CHR_AGE_50']        = $data['cells'][$i][20];
               }
               
               for ($i=1; $i < count($dataexcel); $i++) { 
                 # code...
-                $rkap = $this->Hc_model->get_seq_rkap();
+                $workforce = $this->Hc_model->get_seq_workforce();
                 $datainsert = array(
-                'INT_ID'            => $this->db->escape($rkap->ID),
+                'INT_ID'            => $this->db->escape($workforce->ID),
+                'CHR_BULAN'         => $this->db->escape($dataexcel[$i]['CHR_BULAN']),
                 'CHR_TAHUN'         => $this->db->escape($dataexcel[$i]['CHR_TAHUN']),
                 'CHR_EMP_GROUP'     => $this->db->escape($dataexcel[$i]['CHR_EMP_GROUP']),
-                'INT_JMLH_PEGAWAI'  => $this->db->escape($dataexcel[$i]['INT_JMLH_PEGAWAI']),
+                'CHR_GEN_MAN'       => $this->db->escape($dataexcel[$i]['CHR_GEN_MAN']),
+                'CHR_GEN_WMN'       => $this->db->escape($dataexcel[$i]['CHR_GEN_WMN']),
+                'CHR_SER_DIR'       => $this->db->escape($dataexcel[$i]['CHR_SER_DIR']),
+                'CHR_SER_IND'       => $this->db->escape($dataexcel[$i]['CHR_SER_IND']),
+                'CHR_SER_SUP'       => $this->db->escape($dataexcel[$i]['CHR_SER_SUP']),
+                'CHR_EDU_AB'        => $this->db->escape($dataexcel[$i]['CHR_EDU_AB']),
+                'CHR_EDU_05'        => $this->db->escape($dataexcel[$i]['CHR_EDU_05']),
+                'CHR_EDU_06'        => $this->db->escape($dataexcel[$i]['CHR_EDU_06']),
+                'CHR_EDU_07'        => $this->db->escape($dataexcel[$i]['CHR_EDU_07']),
+                'CHR_EDU_08'        => $this->db->escape($dataexcel[$i]['CHR_EDU_08']),
+                'CHR_AGE_30'        => $this->db->escape($dataexcel[$i]['CHR_AGE_30']),
+                'CHR_AGE_3135'      => $this->db->escape($dataexcel[$i]['CHR_AGE_3135']),
+                'CHR_AGE_3640'      => $this->db->escape($dataexcel[$i]['CHR_AGE_3640']),
+                'CHR_AGE_4145'      => $this->db->escape($dataexcel[$i]['CHR_AGE_4145']),
+                'CHR_AGE_4650'      => $this->db->escape($dataexcel[$i]['CHR_AGE_4650']),
+                'CHR_AGE_50'        => $this->db->escape($dataexcel[$i]['CHR_AGE_50']),
                 'CHR_UPLOAD_DATE'   => $this->db->escape(date('Ymd')),
                 'CHR_UPLOAD_TIME'   => $this->db->escape(date('His'))
         );
 
-                $this->Hc_model->insert_pegawai($datainsert);
+                $this->Hc_model->insert_workforce($datainsert);
               }
  
               //delete file
@@ -178,7 +204,7 @@ class Hc extends CI_Controller {
               unlink($path);
             }
         //redirect ke halaman awal
-        redirect(site_url('hc/upload_rkap'));
+        redirect(site_url('hc/upload_workforce'));
 
   }	
 
@@ -202,7 +228,7 @@ class Hc extends CI_Controller {
   public function do_upload_training() {
     // config upload
             $config['upload_path'] = './temp_upload/';
-            $config['allowed_types'] = 'xls|xlsx';
+            $config['allowed_types'] = 'xls';
             $config['max_size'] = '10000';
             $this->load->library('upload', $config);
  
@@ -231,12 +257,12 @@ class Hc extends CI_Controller {
                    // if ($data['cells'][$i][1] == '')
                    //     break;
                   $dataexcel[$i - 1]['INT_ID']            = $data['cells'][$i][1];
-                  $dataexcel[$i - 1]['CHR_NAMA']          = $data['cells'][$i][2];
-                  $dataexcel[$i - 1]['CHR_EMP_GROUP']     = $data['cells'][$i][3];
-                  $dataexcel[$i - 1]['CHR_DEPT']          = $data['cells'][$i][4];
-                  $dataexcel[$i - 1]['CHR_TRAIN_NAME']    = $data['cells'][$i][5];
-                  $dataexcel[$i - 1]['CHR_TRAINING_MONTH']= $data['cells'][$i][6];
-                  $dataexcel[$i - 1]['CHR_BEBAN_TRAINING']= $data['cells'][$i][7];
+                  $dataexcel[$i - 1]['CHR_BULAN']         = $data['cells'][$i][2];
+                  $dataexcel[$i - 1]['CHR_TAHUN']         = $data['cells'][$i][3];
+                  $dataexcel[$i - 1]['CHR_EMP_GROUP']     = $data['cells'][$i][4];
+                  $dataexcel[$i - 1]['CHR_DEPT']          = $data['cells'][$i][5];
+                  $dataexcel[$i - 1]['CHR_COUNT_MONTH']   = $data['cells'][$i][6];
+                  $dataexcel[$i - 1]['CHR_COUNT_YTD']     = $data['cells'][$i][7];
               }
               
               for ($i=1; $i < count($dataexcel); $i++) { 
@@ -244,12 +270,12 @@ class Hc extends CI_Controller {
                 $training = $this->Hc_model->get_seq_training();
                 $datainsert = array(
                 'INT_ID'            => $this->db->escape($training->ID),
-                'CHR_NAMA'          => $this->db->escape($dataexcel[$i]['CHR_NAMA']),
+                'CHR_BULAN'         => $this->db->escape($dataexcel[$i]['CHR_BULAN']),
+                'CHR_TAHUN'         => $this->db->escape($dataexcel[$i]['CHR_TAHUN']),
                 'CHR_EMP_GROUP'     => $this->db->escape($dataexcel[$i]['CHR_EMP_GROUP']),
                 'CHR_DEPT'          => $this->db->escape($dataexcel[$i]['CHR_DEPT']),
-                'CHR_TRAIN_NAME'    => $this->db->escape($dataexcel[$i]['CHR_GENDER']),
-                'CHR_TRAINING_MONTH'=> $this->db->escape($dataexcel[$i]['DEC_EDUKASI']),
-                'CHR_BEBAN_TRAINING'=> $this->db->escape($dataexcel[$i]['CHR_BOD']),
+                'CHR_COUNT_MONTH'   => $this->db->escape($dataexcel[$i]['CHR_COUNT_MONTH']),
+                'CHR_COUNT_YTD'     => $this->db->escape($dataexcel[$i]['CHR_COUNT_YTD']),
                 'CHR_UPLOAD_DATE'   => $this->db->escape(date('Ymd')),
                 'CHR_UPLOAD_TIME'   => $this->db->escape(date('His'))
         );

@@ -7,27 +7,27 @@ class Hc_model extends CI_Model {
                 $this->load->database();
         }
 
-        public function get_seq_pegawai()
+        public function get_seq_organization()
         {
-                $query = $this->db->query('SELECT sq_hc_pegawai.nextval ID FROM dual');
+                $query = $this->db->query('SELECT sq_hc_organization.nextval ID FROM dual');
                 return $query->row();
         }
 
-        public function insert_pegawai($data)
+        public function insert_organization($data)
         {
-                $this->db->insert('TB_HC_PEGAWAI',$data,FALSE);
+                $this->db->insert('TB_HC_ORGANIZATION',$data,FALSE);
                 
         }
 
-        public function get_seq_rkap()
+        public function get_seq_workforce()
         {
-                $query = $this->db->query('SELECT sq_hc_rkap.nextval ID FROM dual');
+                $query = $this->db->query('SELECT sq_hc_workforce.nextval ID FROM dual');
                 return $query->row();
         }
 
-        public function insert_rkap($data)
+        public function insert_workforce($data)
         {
-                $this->db->insert('TB_HC_RKAP',$data,FALSE);
+                $this->db->insert('TB_HC_WORKFORCE',$data,FALSE);
                 
         }
 
