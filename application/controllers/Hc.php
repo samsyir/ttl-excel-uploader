@@ -280,7 +280,7 @@ class Hc extends CI_Controller {
                 'CHR_UPLOAD_TIME'   => $this->db->escape(date('His'))
         );
 
-                $this->Hc_model->insert_pegawai($datainsert);
+                $this->Hc_model->insert_training($datainsert);
               }
  
               //delete file

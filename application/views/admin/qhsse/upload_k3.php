@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="page-header users-header">
-            <h2>Upload Pegawai
+            <h2>Upload K3
             </h2>
             </div>
         </div>
@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12">
             <?php echo validation_errors(); ?>
-            <?php echo form_open_multipart('hc/do_upload_pegawai'); ?>
+            <?php echo form_open_multipart('qhsse/do_upload_k3'); ?>
             <fieldset>
                 <?php echo $error; ?>                
                 <div class="form-group">

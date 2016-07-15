@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12">
             <?php echo validation_errors(); ?>
-            <?php echo form_open_multipart('qhsse/do_upload_mutu'); ?>
+            <?php echo form_open_multipart('qhsse/do_upload_kepuasan'); ?>
             <fieldset>
                 <?php echo $error; ?>                
                 <div class="form-group">

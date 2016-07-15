@@ -32,7 +32,7 @@ class Qhsse extends CI_Controller {
 	public function do_upload_k3() {
 		// config upload
             $config['upload_path'] = './temp_upload/';
-            $config['allowed_types'] = 'xls|xlsx';
+            $config['allowed_types'] = 'xls';
             $config['max_size'] = '10000';
             $this->load->library('upload', $config);
  
@@ -68,21 +68,21 @@ class Qhsse extends CI_Controller {
         					$dataexcel[$i - 1]['INT_KTS']       = $data['cells'][$i][6];
                   $dataexcel[$i - 1]['INT_TTS']       = $data['cells'][$i][7];
                   $dataexcel[$i - 1]['INT_NM']        = $data['cells'][$i][8];
-                  $dataexcel[$i - 1]['INT_FC']        = $data['cells'][$i][9];
-                  $dataexcel[$i - 1]['INT_FA']        = $data['cells'][$i][10];
-                  $dataexcel[$i - 1]['INT_MTI']       = $data['cells'][$i][11];
-                  $dataexcel[$i - 1]['INT_RWI']       = $data['cells'][$i][12];
-                  $dataexcel[$i - 1]['INT_LTI']       = $data['cells'][$i][13];
-                  $dataexcel[$i - 1]['INT_FT']        = $data['cells'][$i][14];
-                  $dataexcel[$i - 1]['INT_LOSS_DAY']  = $data['cells'][$i][15];
-                  $dataexcel[$i - 1]['DEC_LOSS_COST'] = $data['cells'][$i][16];
-                  $dataexcel[$i - 1]['INT_LTIFR']     = $data['cells'][$i][17];
-                  $dataexcel[$i - 1]['INT_AIFR']      = $data['cells'][$i][18];
-                  $dataexcel[$i - 1]['INT_SR']        = $data['cells'][$i][19];
-                  $dataexcel[$i - 1]['INT_MNHLTI']    = $data['cells'][$i][20];
-                  $dataexcel[$i - 1]['INT_LW_LTIFR']  = $data['cells'][$i][21];
-                  $dataexcel[$i - 1]['INT_HT_LTIFR']  = $data['cells'][$i][22];
-                  $dataexcel[$i - 1]['INT_IR']        = $data['cells'][$i][23];
+                  $dataexcel[$i - 1]['INT_PD']        = $data['cells'][$i][9];
+                  $dataexcel[$i - 1]['INT_FC']        = $data['cells'][$i][10];
+                  $dataexcel[$i - 1]['INT_FA']        = $data['cells'][$i][11];
+                  $dataexcel[$i - 1]['INT_MTI']       = $data['cells'][$i][12];
+                  $dataexcel[$i - 1]['INT_RWI']       = $data['cells'][$i][13];
+                  $dataexcel[$i - 1]['INT_LTI']       = $data['cells'][$i][14];
+                  $dataexcel[$i - 1]['INT_FT']        = $data['cells'][$i][15];
+                  $dataexcel[$i - 1]['INT_LOSS_DAY']  = $data['cells'][$i][16];
+                  $dataexcel[$i - 1]['DEC_LOSS_COST'] = $data['cells'][$i][17];
+                  $dataexcel[$i - 1]['INT_LTIFR']     = $data['cells'][$i][18];
+                  $dataexcel[$i - 1]['INT_AIFR']      = $data['cells'][$i][19];
+                  $dataexcel[$i - 1]['INT_SR']        = $data['cells'][$i][20];
+                  $dataexcel[$i - 1]['INT_MNHLTI']    = $data['cells'][$i][21];
+                  $dataexcel[$i - 1]['INT_LW_LTIFR']  = $data['cells'][$i][22];
+                  $dataexcel[$i - 1]['INT_HT_LTIFR']  = $data['cells'][$i][23];
               }
               
               for ($i=1; $i < count($dataexcel); $i++) { 
@@ -97,6 +97,7 @@ class Qhsse extends CI_Controller {
         				'INT_KTS'           => $this->db->escape($dataexcel[$i]['INT_KTS']),
                 'INT_TTS'           => $this->db->escape($dataexcel[$i]['INT_TTS']),
                 'INT_NM'            => $this->db->escape($dataexcel[$i]['INT_NM']),
+                'INT_PD'            => $this->db->escape($dataexcel[$i]['INT_PD']),
                 'INT_FC'            => $this->db->escape($dataexcel[$i]['INT_FC']),
                 'INT_FA'            => $this->db->escape($dataexcel[$i]['INT_FA']),
                 'INT_MTI'           => $this->db->escape($dataexcel[$i]['INT_MTI']),
@@ -111,10 +112,11 @@ class Qhsse extends CI_Controller {
                 'INT_MNHLTI'        => $this->db->escape($dataexcel[$i]['INT_MNHLTI']),
                 'INT_LW_LTIFR'      => $this->db->escape($dataexcel[$i]['INT_LW_LTIFR']),
                 'INT_HT_LTIFR'      => $this->db->escape($dataexcel[$i]['INT_HT_LTIFR']),
-                'INT_IR'            => $this->db->escape($dataexcel[$i]['INT_IR']),
+                //'INT_IR'            => $this->db->escape($dataexcel[$i]['INT_IR']),
         				'CHR_UPLOAD_DATE'   => $this->db->escape(date('Ymd')),
         				'CHR_UPLOAD_TIME'   => $this->db->escape(date('His'))
 				);
+              var_dump($datainsert);
 
               	$this->Qhsse_model->insert_k3($datainsert);
               }
@@ -149,7 +151,7 @@ class Qhsse extends CI_Controller {
 	public function do_upload_lingkungan() {
     // config upload
             $config['upload_path'] = './temp_upload/';
-            $config['allowed_types'] = 'xls|xlsx';
+            $config['allowed_types'] = 'xls';
             $config['max_size'] = '10000';
             $this->load->library('upload', $config);
  
