@@ -80,9 +80,10 @@ class Qhsse extends CI_Controller {
                   $dataexcel[$i - 1]['INT_LTIFR']     = $data['cells'][$i][18];
                   $dataexcel[$i - 1]['INT_AIFR']      = $data['cells'][$i][19];
                   $dataexcel[$i - 1]['INT_SR']        = $data['cells'][$i][20];
-                  $dataexcel[$i - 1]['INT_MNHLTI']    = $data['cells'][$i][21];
-                  $dataexcel[$i - 1]['INT_LW_LTIFR']  = $data['cells'][$i][22];
-                  $dataexcel[$i - 1]['INT_HT_LTIFR']  = $data['cells'][$i][23];
+                  $dataexcel[$i - 1]['INT_IR']        = $data['cells'][$i][21];
+                  $dataexcel[$i - 1]['INT_MNHLTI']    = $data['cells'][$i][22];
+                  $dataexcel[$i - 1]['INT_LW_LTIFR']  = $data['cells'][$i][23];
+                  $dataexcel[$i - 1]['INT_HT_LTIFR']  = $data['cells'][$i][24];
               }
               
               for ($i=1; $i < count($dataexcel); $i++) { 
@@ -112,11 +113,10 @@ class Qhsse extends CI_Controller {
                 'INT_MNHLTI'        => $this->db->escape($dataexcel[$i]['INT_MNHLTI']),
                 'INT_LW_LTIFR'      => $this->db->escape($dataexcel[$i]['INT_LW_LTIFR']),
                 'INT_HT_LTIFR'      => $this->db->escape($dataexcel[$i]['INT_HT_LTIFR']),
-                //'INT_IR'            => $this->db->escape($dataexcel[$i]['INT_IR']),
+                'INT_IR'            => $this->db->escape($dataexcel[$i]['INT_IR']),
         				'CHR_UPLOAD_DATE'   => $this->db->escape(date('Ymd')),
         				'CHR_UPLOAD_TIME'   => $this->db->escape(date('His'))
 				);
-              var_dump($datainsert);
 
               	$this->Qhsse_model->insert_k3($datainsert);
               }
