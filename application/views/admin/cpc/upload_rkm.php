@@ -12,7 +12,16 @@
     		<?php echo validation_errors(); ?>
             <?php echo form_open_multipart('cpc/do_upload_rkm'); ?>
     		<fieldset>
-                <?php echo $error; ?>                
+                <?php if ($notif == 1) { ?>
+                <div class="alert alert-danger">
+                    <label>Data upload error</label>
+                    <?php echo $error; ?>
+                </div>  
+                <?php } elseif ($notif == 2) { ?>
+                <div class="alert alert-success">
+                    <label>Data upload success</label>
+                </div> 
+                <?php } else echo '';?>              
                 <div class="form-group">
                     <?php 
                         echo '<label>Nama File'.$error.'</label>';

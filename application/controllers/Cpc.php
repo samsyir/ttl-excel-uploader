@@ -12,11 +12,12 @@ class Cpc extends CI_Controller {
 		redirect('welcome');
 	}
 
-	public function upload_investasi($error = NULL) {
+	public function upload_investasi($error = NULL,$notif = NULL) {
 
 		if($this->session->userdata('logged_in'))
     	{
     		$data['error'] = $error['error'];
+    		$data['notif'] = $notif;
 			$this->load->view('public/themes/default/header');
 	        $this->load->view('admin/cpc/upload_investasi',$data);
 	        $this->load->view('public/themes/default/footer');
@@ -39,7 +40,8 @@ class Cpc extends CI_Controller {
             if ( ! $this->upload->do_upload()) {
                 // jika validasi file gagal, kirim parameter error ke index
                 $error = array('error' => $this->upload->display_errors());
-                $this->upload_investasi($error);
+                $notif = 1;
+                $this->upload_investasi($error,$notif);
 
             } 
             else {
@@ -89,6 +91,7 @@ class Cpc extends CI_Controller {
 					$dataexcel[$i - 1]['CHR_KETERANGAN'] 		= $data['cells'][$i][27];
 					$dataexcel[$i - 1]['CHR_PIC_DEPT'] 			= $data['cells'][$i][28];
 					$dataexcel[$i - 1]['CHR_STATUS'] 			= $data['cells'][$i][29];
+					$dataexcel[$i - 1]['CHR_INFORMASI'] 		= $data['cells'][$i][30];
               }
               
               for ($i=1; $i < count($dataexcel); $i++) { 
@@ -124,6 +127,7 @@ class Cpc extends CI_Controller {
 				'CHR_REALISASI_PROGRAM' => $this->db->escape($dataexcel[$i]['CHR_REALISASI_PROGRAM']),
 				'CHR_KETERANGAN' => $this->db->escape($dataexcel[$i]['CHR_KETERANGAN']),
 				'CHR_PIC_DEPT' => $this->db->escape($dataexcel[$i]['CHR_PIC_DEPT']),
+				'CHR_INFORMASI' => $this->db->escape($dataexcel[$i]['CHR_INFORMASI']),
 				'INT_BULAN' => $this->db->escape($this->input->post('bulan')),
 				'CHR_TAHUN' => $this->db->escape($this->input->post('tahun')),
 				'CHR_STATUS' =>  $this->db->escape($dataexcel[$i]['CHR_STATUS']),
@@ -140,15 +144,17 @@ class Cpc extends CI_Controller {
               unlink($path);
             }
         //redirect ke halaman awal
-        redirect(site_url('cpc/upload_investasi'));
+        $notif = 2;
+        $this->upload_investasi($error,$notif);
 
 	}
 
-	public function upload_rkm($error = NULL) {
+	public function upload_rkm($error = NULL,$notif = NULL) {
 
 		if($this->session->userdata('logged_in'))
     	{
     		$data['error'] = $error['error'];
+    		$data['notif'] = $notif;
 			$this->load->view('public/themes/default/header');
 	        $this->load->view('admin/cpc/upload_rkm',$data);
 	        $this->load->view('public/themes/default/footer');
@@ -171,7 +177,8 @@ class Cpc extends CI_Controller {
             if ( ! $this->upload->do_upload()) {
                 // jika validasi file gagal, kirim parameter error ke index
                 $error = array('error' => $this->upload->display_errors());
-                $this->upload_rkm($error);
+                $notif = 1;
+                $this->upload_rkm($error,$notif);
 
             } 
             else {
@@ -224,6 +231,7 @@ class Cpc extends CI_Controller {
 				'CHR_STATUS_SELESAI' => $this->db->escape($dataexcel[$i]['CHR_STATUS_SELESAI']),
 				'CHR_STATUS_TDK_DILAKSANAKAN' => $this->db->escape($dataexcel[$i]['CHR_STATUS_TDK_DILAKSANAKAN']),
 				'CHR_KETERANGAN' => $this->db->escape($dataexcel[$i]['CHR_KETERANGAN']),
+				'CHR_INFORMASI' => $this->db->escape($dataexcel[$i]['CHR_INFORMASI']),
 				'CHR_BULAN' => $this->db->escape($this->input->post('bulan')),
 				'CHR_TAHUN' => $this->db->escape($this->input->post('tahun')),
 				'CHR_STATUS' => 1,
@@ -240,7 +248,8 @@ class Cpc extends CI_Controller {
               unlink($path);
             }
         //redirect ke halaman awal
-        redirect(site_url('cpc/upload_rkm'));
+        $notif = 2;
+        $this->upload_rkm($error,$notif);
 
 	}	
 
