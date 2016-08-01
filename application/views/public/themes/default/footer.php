@@ -1,4 +1,4 @@
-<!-- jQuery 
+<!-- jQuery -->
 <script src="<?= base_url() ?>assets/admin/js/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
